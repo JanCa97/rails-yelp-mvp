@@ -1,0 +1,17 @@
+<h1 class="mb-3"><%= @restaurant.name %></h1>
+<p><strong>Address: </strong><%= @restaurant.address %></p>
+<p><strong>Category: </strong><%= @restaurant.category.capitalize %></p>
+<div id="reviews">
+  <p><strong>Reviews: </strong></p>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item"><%= review.content %> (<%= "*" * review.rating %>)</li>
+    <% end %>
+  </ul>
+  <br>
+  <div class="card bg-light mb-3">
+  <div class="card-header">Add Review</div>
+  <div class="card-body">
+    <%= render "/reviews/form", restaurant: @restaurant, review: @review %>
+  </div>
+</div>
